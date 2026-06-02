@@ -72,24 +72,112 @@ h1 {
   background-color: var(--btn-hover);
 }
 
+.container {
+  max-width: 650px;
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin-top: 40px;
+}
+
+.subtitle {
+  color: var(--text-color);
+  opacity: 0.7;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
 #numbers-display {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   gap: 15px;
-  padding: 20px;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.game-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+[data-theme="dark"] .game-row {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.game-row:hover {
+  transform: translateY(-1px);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .game-row:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.game-label {
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.balls-container {
+  display: flex;
+  gap: 10px;
 }
 
 .lottery-number {
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   background-color: var(--ball-bg);
   color: var(--ball-text);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6) rotate(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .game-row {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+  }
+  .balls-container {
+    gap: 6px;
+  }
+  .lottery-number {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
 }
