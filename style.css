@@ -1,1 +1,95 @@
-/* Add styles here */
+:root {
+  --bg-color: #f0f2f5;
+  --text-color: #333;
+  --btn-bg: #007bff;
+  --btn-hover: #0056b3;
+  --ball-bg: #ff6b6b;
+  --ball-text: white;
+  --toggle-bg: #ddd;
+  --toggle-text: #333;
+}
+
+[data-theme="dark"] {
+  --bg-color: #18191a;
+  --text-color: #e4e6eb;
+  --btn-bg: #3a3b3c;
+  --btn-hover: #4e4f50;
+  --ball-bg: #ff4757;
+  --ball-text: white;
+  --toggle-bg: #333;
+  --toggle-text: #f0f0f0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+  color: var(--text-color);
+  margin-bottom: 30px;
+}
+
+#theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: var(--toggle-bg);
+  color: var(--toggle-text);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  opacity: 0.8;
+}
+
+#generate-button {
+  padding: 12px 25px;
+  font-size: 16px;
+  color: white;
+  background-color: var(--btn-bg);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 30px;
+}
+
+#generate-button:hover {
+  background-color: var(--btn-hover);
+}
+
+#numbers-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.lottery-number {
+  width: 50px;
+  height: 50px;
+  background-color: var(--ball-bg);
+  color: var(--ball-text);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
