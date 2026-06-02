@@ -166,6 +166,30 @@ h1 {
   }
 }
 
+/* 로또 번호 대역별 5가지 색상 (대한민국 공식 로또 기준) */
+.ball-color-1 {
+  background: linear-gradient(135deg, #fef08a 0%, #facc15 100%) !important; /* 1 ~ 10: 노랑 */
+  color: #2c2c2c !important;
+  text-shadow: none !important;
+  box-shadow: 0 4px 8px rgba(234, 179, 8, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+.ball-color-2 {
+  background: linear-gradient(135deg, #93c5fd 0%, #2563eb 100%) !important; /* 11 ~ 20: 파랑 */
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+.ball-color-3 {
+  background: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%) !important; /* 21 ~ 30: 빨강 */
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+.ball-color-4 {
+  background: linear-gradient(135deg, #d1d5db 0%, #4b5563 100%) !important; /* 31 ~ 40: 회색 */
+  box-shadow: 0 4px 8px rgba(75, 85, 99, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+.ball-color-5 {
+  background: linear-gradient(135deg, #86efac 0%, #16a34a 100%) !important; /* 41 ~ 45: 초록 */
+  box-shadow: 0 4px 8px rgba(22, 163, 74, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
 @media (max-width: 500px) {
   .game-row {
     flex-direction: column;

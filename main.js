@@ -31,6 +31,20 @@ function displayFiveGames() {
       const numberElement = document.createElement('span');
       numberElement.classList.add('lottery-number');
       numberElement.textContent = number;
+      
+      // 번호 구간에 따른 대한민국 공식 로또 색상 클래스 추가
+      if (number >= 1 && number <= 10) {
+        numberElement.classList.add('ball-color-1');
+      } else if (number >= 11 && number <= 20) {
+        numberElement.classList.add('ball-color-2');
+      } else if (number >= 21 && number <= 30) {
+        numberElement.classList.add('ball-color-3');
+      } else if (number >= 31 && number <= 40) {
+        numberElement.classList.add('ball-color-4');
+      } else {
+        numberElement.classList.add('ball-color-5');
+      }
+
       // 시간차 등장 애니메이션 지연시간 설정
       numberElement.style.animationDelay = `${(g - 1) * 150 + index * 50}ms`;
       ballsContainer.appendChild(numberElement);
