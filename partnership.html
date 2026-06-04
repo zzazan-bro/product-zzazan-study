@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비즈니스 제휴 문의 | Zzazan</title>
+  <meta name="description" content="Zzazan과의 비즈니스 제휴 및 파트너십 문의 양식입니다. 제안을 남겨주시면 검토 후 연락드리겠습니다.">
+  <link rel="stylesheet" href="partnership.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Dark/Light Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle-btn" aria-label="테마 전환">🌙 Dark Mode</button>
+
+  <div class="background-decorations">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+  </div>
+
+  <main class="form-container">
+    <header class="form-header">
+      <div class="logo">Zzazan Partnership</div>
+      <h1>비즈니스 제휴 제안</h1>
+      <p class="subtitle">새로운 가치를 함께 만들어갈 파트너십 제안을 환영합니다.<br>아래 양식을 작성해 주시면 담당자가 신속히 검토 후 답변드리겠습니다.</p>
+    </header>
+
+    <!--
+      [Formspree 설정 안내]
+      action의 'YOUR_FORMSPREE_ID' 부분을 발급받으신 Formspree Form ID로 변경해 주세요.
+      예시: https://formspree.io/f/xbjnqwdz
+    -->
+    <form id="partnership-form" action="https://formspree.io/f/meewjbzp" method="POST" class="partnership-form">
+      
+      <!-- Hidden Honeypot field to prevent spam (Formspree feature) -->
+      <input type="text" name="_gotcha" style="display:none">
+
+      <div class="form-grid">
+        <!-- 회사/단체명 -->
+        <div class="form-group">
+          <label for="company">회사/단체명 <span class="required">*</span></label>
+          <input type="text" id="company" name="company" required placeholder="예: 주식회사 짜잔" autocomplete="organization">
+          <span class="error-msg">회사 또는 단체명을 입력해 주세요.</span>
+        </div>
+
+        <!-- 제휴 유형 -->
+        <div class="form-group">
+          <label for="partnership-type">제휴 유형 <span class="required">*</span></label>
+          <div class="select-wrapper">
+            <select id="partnership-type" name="partnership_type" required>
+              <option value="" disabled selected>유형을 선택해 주세요</option>
+              <option value="marketing">마케팅 / 프로모션 제휴</option>
+              <option value="content">콘텐츠 라이선싱 및 제공</option>
+              <option value="technology">기술 협력 및 API 연동</option>
+              <option value="sales">판매 / 총판 대리점 문의</option>
+              <option value="other">기타 비즈니스 협력</option>
+            </select>
+          </div>
+          <span class="error-msg">제휴 유형을 선택해 주세요.</span>
+        </div>
+
+        <!-- 담당자명 -->
+        <div class="form-group">
+          <label for="name">담당자명 <span class="required">*</span></label>
+          <input type="text" id="name" name="name" required placeholder="예: 홍길동" autocomplete="name">
+          <span class="error-msg">담당자명을 입력해 주세요.</span>
+        </div>
+
+        <!-- 연락처 전화번호 -->
+        <div class="form-group">
+          <label for="phone">연락처 <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" required placeholder="예: 010-1234-5678" autocomplete="tel">
+          <span class="error-msg">올바른 연락처를 입력해 주세요.</span>
+        </div>
+
+        <!-- 담당자 이메일 (전체 너비) -->
+        <div class="form-group full-width">
+          <label for="email">이메일 주소 <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required placeholder="example@company.com" autocomplete="email">
+          <span class="error-msg">올바른 이메일 형식을 입력해 주세요.</span>
+        </div>
+
+        <!-- 제안 제목 (전체 너비) -->
+        <div class="form-group full-width">
+          <label for="title">제안 제목 <span class="required">*</span></label>
+          <input type="text" id="title" name="title" required placeholder="제안 내용의 핵심을 한 줄로 요약해 주세요.">
+          <span class="error-msg">제목을 입력해 주세요.</span>
+        </div>
+
+        <!-- 제안 상세 내용 (전체 너비) -->
+        <div class="form-group full-width">
+          <label for="message">제안 상세 내용 <span class="required">*</span></label>
+          <textarea id="message" name="message" required placeholder="제휴 제안의 배경, 상세 목적, 기대 효과 등을 자유롭게 작성해 주세요. (최대 2000자)" maxlength="2000"></textarea>
+          <div class="char-count"><span id="current-chars">0</span> / 2000</div>
+          <span class="error-msg">상세 내용을 입력해 주세요.</span>
+        </div>
+
+        <!-- 개인정보 수집 동의 (전체 너비) -->
+        <div class="form-group full-width checkbox-group">
+          <label class="checkbox-container">
+            <input type="checkbox" id="privacy-agreement" required name="privacy_agreement" value="agreed">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">개인정보 수집 및 이용에 동의합니다. <span class="required">*</span></span>
+          </label>
+          <a href="#" class="privacy-link" onclick="alert('제휴 문의 처리 목적으로 회사명, 담당자명, 연락처, 이메일을 수집하며, 검토 완료 후 1년간 보관 후 파기합니다.')">내용 보기</a>
+          <span class="error-msg">개인정보 수집 및 이용에 동의해야 문의 접수가 가능합니다.</span>
+        </div>
+      </div>
+
+      <!-- 제출 버튼 -->
+      <button type="submit" id="submit-btn" class="submit-btn">
+        <span class="btn-text">제안서 제출하기</span>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+    </form>
+
+    <!-- Success Screen (Hidden by default) -->
+    <div id="success-message" class="status-card success-card" style="display: none;">
+      <div class="icon-circle">
+        <svg class="checkmark-svg" viewBox="0 0 52 52">
+          <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+      <h2>제안이 성공적으로 접수되었습니다!</h2>
+      <p>보내주신 제휴 제안 내용을 소중히 검토한 후, 기재해주신 이메일 또는 연락처를 통해 영업일 기준 3~5일 이내에 연락드리겠습니다.</p>
+      <button id="reset-btn" class="secondary-btn">새 문의 작성하기</button>
+    </div>
+
+    <!-- Error Screen (Hidden by default) -->
+    <div id="error-message" class="status-card error-card" style="display: none;">
+      <div class="icon-circle error-icon">
+        <svg class="error-svg" viewBox="0 0 52 52">
+          <circle class="error-circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="error-line1" d="M16 16 36 36"/>
+          <path class="error-line2" d="M36 16 16 36"/>
+        </svg>
+      </div>
+      <h2>제출에 실패했습니다</h2>
+      <p>서버 통신 중 오류가 발생했거나 Formspree ID가 아직 설정되지 않았습니다. 잠시 후 다시 시도해 주세요.</p>
+      <button id="retry-btn" class="secondary-btn">다시 시도하기</button>
+    </div>
+  </main>
+
+  <script src="partnership.js"></script>
+</body>
+</html>

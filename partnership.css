@@ -1,0 +1,616 @@
+/* CSS Variable Definitions for Light and Dark Modes */
+:root {
+  /* Light Mode Palette */
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(255, 255, 255, 0.4);
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: #cbd5e1;
+  --input-focus: #4f46e5;
+  --input-focus-shadow: rgba(79, 70, 229, 0.15);
+  --accent-color: #4f46e5;
+  --accent-hover: #4338ca;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --toggle-bg: rgba(0, 0, 0, 0.05);
+  --toggle-text: #334155;
+  --shadow-color: rgba(15, 23, 42, 0.08);
+  --decor-circle-1: rgba(99, 102, 241, 0.15);
+  --decor-circle-2: rgba(236, 72, 153, 0.12);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Palette */
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --input-bg: rgba(15, 23, 42, 0.6);
+  --input-border: #334155;
+  --input-focus: #818cf8;
+  --input-focus-shadow: rgba(129, 140, 248, 0.25);
+  --accent-color: #6366f1;
+  --accent-hover: #4f46e5;
+  --success-color: #34d399;
+  --error-color: #f87171;
+  --toggle-bg: rgba(255, 255, 255, 0.08);
+  --toggle-text: #f1f5f9;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --decor-circle-1: rgba(99, 102, 241, 0.25);
+  --decor-circle-2: rgba(236, 72, 153, 0.2);
+}
+
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  position: relative;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--toggle-bg);
+  color: var(--toggle-text);
+  border: 1px solid var(--card-border);
+  border-radius: 30px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Decorative Background Elements */
+.background-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: floatDecoration 12s infinite alternate ease-in-out;
+}
+
+.circle-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--decor-circle-1);
+  top: -100px;
+  left: -100px;
+}
+
+.circle-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--decor-circle-2);
+  bottom: -150px;
+  right: -150px;
+  animation-delay: -6s;
+}
+
+@keyframes floatDecoration {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(50px) scale(1.1);
+  }
+}
+
+/* Glassmorphism Card Container */
+.form-container {
+  max-width: 750px;
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: 0 20px 40px var(--shadow-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: background 0.4s ease, border 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+}
+
+/* Form Header */
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-color);
+  margin-bottom: 12px;
+}
+
+.form-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Grid Layout for Form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 20px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+/* Labels and Inputs */
+label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.required {
+  color: var(--error-color);
+  margin-left: 3px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* Focus and Validation Styling */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 4px var(--input-focus-shadow);
+  background-color: rgba(255, 255, 255, 1);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+  background-color: rgba(15, 23, 42, 0.9);
+}
+
+/* Error messages and states */
+.error-msg {
+  font-size: 12px;
+  color: var(--error-color);
+  margin-top: 6px;
+  display: none;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.form-group.has-error input,
+.form-group.has-error select,
+.form-group.has-error textarea {
+  border-color: var(--error-color);
+  background-color: rgba(239, 68, 68, 0.03);
+}
+
+.form-group.has-error .error-msg {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom Dropdown select indicator */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--text-secondary);
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 40px;
+}
+
+select:focus + .select-wrapper::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Custom Textarea & Char Count */
+textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.char-count {
+  align-self: flex-end;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Custom Checkbox */
+.checkbox-group {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  margin-right: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  border-color: var(--input-focus);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+  display: block;
+}
+
+.privacy-link {
+  font-size: 13px;
+  color: var(--accent-color);
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.privacy-link:hover {
+  color: var(--accent-hover);
+}
+
+/* Submit Button & Animations */
+.submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  color: white;
+  background: var(--accent-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.35);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Button Spinner state */
+.submit-btn .spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  margin-left: 10px;
+}
+
+.submit-btn.is-loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.submit-btn.is-loading .spinner {
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success/Error Status Card Screens */
+.status-card {
+  text-align: center;
+  padding: 40px 10px;
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.status-card h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 24px 0 12px;
+}
+
+.status-card p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto 30px;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(16, 185, 129, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.icon-circle.error-icon {
+  background-color: rgba(239, 110, 110, 0.1);
+}
+
+/* SVG Checkmark/Error animations */
+.checkmark-svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--success-color);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke: var(--success-color);
+  stroke-width: 2;
+  animation: strokeCircle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: strokeCheck 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+.error-svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--error-color);
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.error-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke: var(--error-color);
+  stroke-width: 2;
+  animation: strokeCircle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.error-line1, .error-line2 {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+}
+
+.error-line1 {
+  animation: strokeCheck 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
+}
+
+.error-line2 {
+  animation: strokeCheck 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.7s forwards;
+}
+
+@keyframes strokeCircle {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes strokeCheck {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.secondary-btn {
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background-color: var(--text-primary);
+  color: var(--input-bg);
+  border-color: var(--text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 40px 16px;
+  }
+  
+  .form-container {
+    padding: 30px 20px;
+  }
+
+  .form-header h1 {
+    font-size: 26px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+
+  .checkbox-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
