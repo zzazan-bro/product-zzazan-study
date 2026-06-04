@@ -63,13 +63,40 @@ document.getElementById('generate-button').addEventListener('click', () => {
 const themeToggleBtn = document.getElementById('theme-toggle');
 const body = document.documentElement;
 
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme) {
-  body.setAttribute('data-theme', currentTheme);
-  if (currentTheme === 'dark') {
-    themeToggleBtn.textContent = '☀️ Light Mode';
+// Function to update Utterances theme dynamically
+function updateUtterancesTheme(theme) {
+  const utterancesTheme = theme === 'dark' ? 'github-dark' : 'github-light';
+  const utterancesFrame = document.querySelector('.utterances-frame');
+  if (utterancesFrame) {
+    utterancesFrame.contentWindow.postMessage({
+      type: 'set-theme',
+      theme: utterancesTheme
+    }, 'https://utteranc.es');
   }
 }
+
+const currentTheme = localStorage.getItem('theme') || 'light';
+body.setAttribute('data-theme', currentTheme);
+if (currentTheme === 'dark') {
+  themeToggleBtn.textContent = '☀️ Light Mode';
+}
+
+// Load Utterances dynamically
+document.addEventListener('DOMContentLoaded', () => {
+  const utterancesTheme = body.getAttribute('data-theme') === 'dark' ? 'github-dark' : 'github-light';
+  const script = document.createElement('script');
+  script.src = 'https://utteranc.es/client.js';
+  script.setAttribute('repo', 'zzazan-bro/product-zzazan-study');
+  script.setAttribute('issue-term', 'pathname');
+  script.setAttribute('theme', utterancesTheme);
+  script.setAttribute('crossorigin', 'anonymous');
+  script.async = true;
+  
+  const commentsContainer = document.querySelector('.comments-container');
+  if (commentsContainer) {
+    commentsContainer.appendChild(script);
+  }
+});
 
 themeToggleBtn.addEventListener('click', () => {
   let targetTheme = 'light';
@@ -85,4 +112,7 @@ themeToggleBtn.addEventListener('click', () => {
   } else {
     themeToggleBtn.textContent = '🌙 Dark Mode';
   }
+
+  // Update Utterances theme dynamically
+  updateUtterancesTheme(targetTheme);
 });
