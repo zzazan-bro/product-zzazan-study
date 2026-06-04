@@ -85,7 +85,22 @@ h1 {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  margin: auto 0;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.comments-container {
+  max-width: 650px;
+  width: 100%;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin-bottom: auto;
+  box-sizing: border-box;
 }
 
 .subtitle {
